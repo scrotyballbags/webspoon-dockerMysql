@@ -11,7 +11,6 @@ RUN sh /tmp/install.sh
 
 ADD https://github.com/HiromuHota/pentaho-kettle/releases/download/webspoon%2F$version/webspoon-security-$dist-$patch.jar ${CATALINA_HOME}/lib/
 ADD https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.46.tar.gz ${CATALINA_HOME}/lib/
-COPY /usr/local/tomcat/lib/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46.jar ${CATALINA_HOME}/lib/
 RUN echo "CLASSPATH="$CATALINA_HOME"/lib/webspoon-security-$dist-$patch.jar" | tee ${CATALINA_HOME}/bin/setenv.sh
 COPY catalina.policy ${CATALINA_HOME}/conf/
 RUN mkdir -p $HOME/.kettle/users && mkdir -p $HOME/.pentaho/users
